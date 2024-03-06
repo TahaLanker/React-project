@@ -1,0 +1,26 @@
+class OldSyntax{
+    constructor(){
+        this.name = 'Taha';
+        this.getGreetings = this.getGreetings.bind(this);
+    }   
+    getGreetings(){
+        return `Hi. My name is ${this.name}`
+    }
+}
+const oldS = new OldSyntax();
+console.log('oldS-', oldS);
+//but if we break the instance
+const oldF = oldS.getGreetings;
+//thorws error without binding
+console.log('oldS fxn-', oldF());
+
+class NewSyntax{
+    name = 'Lanker';
+    getGreetings = () => {      //use arrow fxn----class property
+        return `My name is ${this.name}`
+    }
+}
+const newS = new NewSyntax();
+console.log('newS-', newS);
+const newF = newS.getGreetings;
+console.log('newF fxn-', newF());
